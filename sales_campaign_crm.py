@@ -1,6 +1,5 @@
 import os
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 import smtplib
 from email.mime.text import MIMEText
 import dns.resolver
@@ -12,7 +11,6 @@ import queue
 import threading
 import logging
 from googleapiclient.discovery import build
-from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
 
 # Setting up logging
