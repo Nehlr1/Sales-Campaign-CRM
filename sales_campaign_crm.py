@@ -187,7 +187,7 @@ class CRMHandler:
             self.sheet.update_cells(cells)
 
     def validate_email(self, email):
-        # Validate an email address using EmailValidator
+        # Validating an email address using EmailValidator
         return self.email_validator.validate(email)
 
 class AgentA(CRMHandler):
@@ -198,7 +198,7 @@ class AgentA(CRMHandler):
         self.running = False
         
     def start_processing(self):
-        """Continuously fetch and process verification tasks."""
+        """Continuously fetching and processing verification tasks."""
         self.running = True
         while self.running:
             lead = self.task_queue.get_verification_task() # Fetching a lead from the queue
@@ -236,16 +236,7 @@ class AgentA(CRMHandler):
                 "Processing Status": "Error",
                 "Notes": f"Verification failed: {str(e)}"
             })
-    
-    def perform_additional_checks(self, lead_data):
-        """Performing additional verification checks on the lead."""
-        checks = [
-            self.check_industry(lead_data),
-            self.check_company_size(lead_data),
-            self.check_contact_details(lead_data)
-        ]
-        return all(checks) # Passes only if all checks return True
-    
+
     def check_industry(self, lead_data):
         """Ensuring the lead is not from a competitor industry."""
         return lead_data.get("Industry", "").lower() not in ["competitor", "direct competitor"]
@@ -258,6 +249,15 @@ class AgentA(CRMHandler):
         """Ensuring all required contact fields are present."""
         required_fields = ["Email", "Company", "Contact Number"]
         return all(lead_data.get(field) for field in required_fields)
+    
+    def perform_additional_checks(self, lead_data):
+        """Performing additional verification checks on the lead (Future Approch)."""
+        checks = [
+            self.check_industry(lead_data),
+            self.check_company_size(lead_data),
+            self.check_contact_details(lead_data)
+        ]
+        return all(checks) # Passes only if all checks return True
 
 class AgentB(CRMHandler):
     """Agent responsible for processing outreach tasks, including email sending and retries."""
