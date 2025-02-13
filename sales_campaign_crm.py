@@ -313,7 +313,7 @@ class AgentB(CRMHandler):
     
     def send_email(self, lead):
         """Sending an email to the lead using SMTP."""
-        msg = MIMEText("Your custom sales message here...") # Creating email body
+        msg = MIMEText("The custom sales message here...") # Creating email body
         msg["Subject"] = "Special Offer for Your Business" # Email subject
         msg["From"] = self.smtp_config["email"] # Sender email
         msg["To"] = lead["Email"] # Recipient email
