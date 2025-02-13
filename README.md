@@ -42,6 +42,8 @@ You must set up a project in the Google Cloud Console and activate the Google Sh
 6. Click on the action button and select `manage keys`
 7. Click the `ADD KEY` button choosing the `Create new key` and choose `JSON`. This will download a JSON file containing your credentials.
 
+**Note**: Using `Gmail API` to read inbox messages and send emails, requires paid google cloud services after some requests.
+
 ### Step 4: Save and Use Your Credentials
 
 In the directory containing your Python script, save the downloaded JSON file as `credentials.json`. This file is what your Python script will use to authenticate itself.
